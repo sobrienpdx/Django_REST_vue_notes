@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="Django_REST_Vue_notes.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<title> REST checklist </title>
+</meta>
+</head>
+
+
+<body>
+  <div id="app">
+          <h1>{{ heading }}</h1>
+
+          <div class="holder">
+						<button id="top" class="see_django" v-on:click="showDjango">Basic Django Setup</button>
+						<button id="top" class="see_Rest" v-on:click="showRest">REST Setup</button></br>
+              <input id="search"
+                type="text"
+                placeholder="Search..."
+                v-on:keyup="search"
+                v-model="query"
+              />
+							<ul class="results">
+                  <li
+                  v-for="result in results"
+                  v-bind:class="{completed: result.completed}"
+                  >
+									<pre v-html='result.textForToDo'></pre>
+							</ul>
+<h2>Steps:</h2>
+              <ul class="item">
+                  <li
+                  v-for="(x, index) in toDos"
+                  v-bind:class="{completed: x.completed}"
+                  v-bind:index="index"
+                  >
+									  <pre v-html='x.textForToDo'></pre>
+                    <button class="done" v-on:click="markDone(index)">Strike</button>
+                    <button class="remove" v-on:click="removeToDo(index)">Done</button>
+                </li>
+              </ul>
+          </div>
+
+      </div>
+
+<script src="Django_REST_Vue_notes.js"> </script>
+</body>
+</html>
